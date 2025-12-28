@@ -14,9 +14,9 @@ Minimal, responsive, single-file frontend
 
 1.Clone repo:
 
-git clone <repo-url>
+git clone "<repo-url>"
 
-cd <project-folder>
+cd "<project-folder>"
 
 2.Install dependencies:
 
