@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather & News App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Weather & News</h1>
+
+  <input type="text" id="city" placeholder="Enter city name">
+  <button onclick="getWeather()">Get Weather</button>
+  <button onclick="getNews()">Get News from US</button>
+
+  <div id="weather" class="card"></div>
+
+  <h2>News</h2>
+  <ul id="news"></ul>
+
+  <script>
+    // Fetch weather for any city
+    async function getWeather() {
+      const city = document.getElementById("city").value.trim();
+      if (!city) return alert("Please enter a city");
+
+      try {
+        const res = await fetch(`/api/weather?city=${city}`);
+        const weather = await res.json();
+
+        document.getElementById("weather").innerHTML = `
+          <strong>Country:</strong> ${weather.country}<br>
+          <strong>Temperature:</strong> ${weather.temperature} °C<br>
+          <strong>Feels like:</strong> ${weather.feels_like} °C<br>
+          <strong>Description:</strong> ${weather.description}<br>
+          <strong>Wind speed:</strong> ${weather.wind_speed} m/s<br>
+          <strong>Rain (3h):</strong> ${weather.rain_3h} mm
+        `;
+      } catch (error) {
+        alert("Failed to load weather data");
+      }
+    }
+
+    // Fetch news
+    async function getNews() {
+      try {
+        const res = await fetch(`/api/news?country=us`);
+        const news = await res.json();
+
+        document.getElementById("news").innerHTML = news
+          .map(n => `<li><a href="${n.url}" target="_blank">${n.title}</a></li>`)
+          .join("");
+
+      } catch (error) {
+        alert("Failed to load news");
+      }
+    }
+  </script>
+</body>
+</html>
