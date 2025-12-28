@@ -4,11 +4,11 @@
 
 Server-side API integration project using Node.js/Express.
 
-Fetches weather for any city via OpenWeather API
+1.Fetches weather for any city via OpenWeather API
 
-Fetches top news headlines via NewsAPI
+2.Fetches top news headlines via NewsAPI
 
-Minimal, responsive, single-file frontend
+3.Minimal, responsive, single-file frontend
 
 **Setup Instructions**
 
