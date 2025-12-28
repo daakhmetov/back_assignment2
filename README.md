@@ -14,6 +14,7 @@ Minimal, responsive, single-file frontend
 1.Clone repo:
 
 git clone <repo-url>
+
 cd <project-folder>
 
 2.Install dependencies:
@@ -27,27 +28,35 @@ node server.js
 5.Open frontend: http://localhost:3000
 
 **API Usage**
-**Weather**
-GET /api/weather?city=<city_name>
 
+**Weather**
+
+GET /api/weather?city=<city_name>
 
 **Response:**
 
 {
   "temperature": 25.3,
+  
   "feels_like": 26.1,
+  
   "description": "clear sky",
+  
   "coordinates": { "lon": 71.43, "lat": 51.13 },
+  
   "wind_speed": 3.5,
+  
   "country": "KZ",
+  
   "rain_3h": 0
 }
 
 **News**
+
 GET /api/news?country=<country_code>
 
-
 **Response:**
+
 Top 5 articles with title and URL:
 
 [
@@ -75,6 +84,7 @@ Top 5 articles with title and URL:
 1.Direct API test:
 
 http://localhost:3000/api/weather?city=Astana
+
 http://localhost:3000/api/news?country=kz
 
 
